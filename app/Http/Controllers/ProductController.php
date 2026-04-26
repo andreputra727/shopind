@@ -15,10 +15,15 @@ class ProductController extends Controller
             $query->where('kategori', $request->kategori);
         }
 
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
         $products = $query->latest()->get();
         $kategoriAktif = $request->kategori;
+        $search = $request->search;
 
-        return view('products.index', compact('products', 'kategoriAktif'));
+        return view('products.index', compact('products', 'kategoriAktif', 'search'));
     }
 
     public function show($id)

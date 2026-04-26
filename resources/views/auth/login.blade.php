@@ -37,9 +37,10 @@
         border: 1.5px solid #EBEAED; border-radius: 10px;
         font-family: inherit; font-size: .9rem; color: #020035;
         background: #F2F3F4; transition: all .15s; outline: none;
+        box-sizing: border-box;
     }
     .form-input:focus { border-color: #02066F; background: white; box-shadow: 0 0 0 3px #EBEAED; }
-    .form-input::placeholder { color: #2000B1; }
+    .form-input::placeholder { color: #B0AEBD; }
     .form-error { font-size: .78rem; color: #ED4B00; margin-top: 5px; font-weight: 500; }
     .form-remember {
         display: flex; align-items: center; gap: 8px;

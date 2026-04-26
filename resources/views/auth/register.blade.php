@@ -1,77 +1,63 @@
 <x-guest-layout>
 <style>
-    body { background: #F8FAFC !important; }
-
+    body { background: #F2F3F4 !important; }
     .login-wrapper {
         min-height: 100vh;
         display: flex; align-items: center; justify-content: center;
         padding: 24px;
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-family: 'Sora', sans-serif;
         background:
-            radial-gradient(ellipse 60% 50% at 50% -10%, #DBEAFE 0%, transparent 70%),
-            #F8FAFC;
+            radial-gradient(ellipse 60% 50% at 50% -10%, #EBEAED 0%, transparent 70%),
+            #F2F3F4;
     }
-
     .login-card {
         background: white;
         border-radius: 24px;
-        border: 1.5px solid #E2E8F0;
+        border: 1.5px solid #EBEAED;
         padding: 44px 40px;
         width: 100%; max-width: 420px;
-        box-shadow: 0 8px 40px rgba(15,23,42,.08);
+        box-shadow: 0 8px 40px rgba(2,0,53,.08);
     }
-
     .login-brand { text-align: center; margin-bottom: 32px; }
     .login-brand-name {
         font-size: 1.75rem; font-weight: 800;
-        color: #2563EB; letter-spacing: -.5px;
+        color: #02066F; letter-spacing: -.5px;
         display: block; text-decoration: none;
     }
-    .login-brand-sub { font-size: .8rem; color: #94A3B8; font-weight: 500; margin-top: 2px; }
-
-    .login-heading { font-size: 1.15rem; font-weight: 700; color: #0F172A; margin-bottom: 6px; }
-    .login-subheading { font-size: .875rem; color: #64748B; margin-bottom: 28px; }
-
+    .login-brand-sub { font-size: .8rem; color: #2000B1; font-weight: 500; margin-top: 2px; }
+    .login-heading { font-size: 1.15rem; font-weight: 700; color: #020035; margin-bottom: 6px; }
+    .login-subheading { font-size: .875rem; color: #2000B1; margin-bottom: 28px; }
     .form-group { margin-bottom: 18px; }
     .form-label {
         display: block; font-size: .8rem; font-weight: 700;
-        color: #374151; margin-bottom: 6px; letter-spacing: .01em;
+        color: #020035; margin-bottom: 6px; letter-spacing: .01em;
     }
     .form-input {
         width: 100%; padding: 11px 14px;
-        border: 1.5px solid #E2E8F0; border-radius: 10px;
-        font-family: inherit; font-size: .9rem; color: #0F172A;
-        background: #FAFAFA; transition: all .15s; outline: none;
+        border: 1.5px solid #EBEAED; border-radius: 10px;
+        font-family: inherit; font-size: .9rem; color: #020035;
+        background: #F2F3F4; transition: all .15s; outline: none;
         box-sizing: border-box;
     }
-    .form-input:focus { border-color: #2563EB; background: white; box-shadow: 0 0 0 3px #DBEAFE; }
-    .form-input::placeholder { color: #CBD5E1; }
-
-    .form-error { font-size: .78rem; color: #EF4444; margin-top: 5px; font-weight: 500; }
-
+    .form-input:focus { border-color: #02066F; background: white; box-shadow: 0 0 0 3px #EBEAED; }
+    .form-input::placeholder { color: #B0AEBD; }
+    .form-error { font-size: .78rem; color: #ED4B00; margin-top: 5px; font-weight: 500; }
     .btn-submit {
         width: 100%; padding: 13px;
-        background: #2563EB; color: white;
+        background: #02066F; color: white;
         font-family: inherit; font-size: .95rem; font-weight: 700;
         border: none; border-radius: 11px;
         cursor: pointer; transition: background .15s, transform .1s;
     }
-    .btn-submit:hover { background: #1D4ED8; }
+    .btn-submit:hover { background: #020035; }
     .btn-submit:active { transform: scale(.98); }
-
-    .login-footer {
-        text-align: center; margin-top: 20px;
-        font-size: .83rem; color: #94A3B8;
-    }
-    .login-footer a {
-        color: #2563EB; font-weight: 600; text-decoration: none;
-    }
+    .login-footer { text-align: center; margin-top: 20px; font-size: .83rem; color: #2000B1; }
+    .login-footer a { color: #02066F; font-weight: 600; text-decoration: none; }
     .login-footer a:hover { text-decoration: underline; }
-
-    .divider { height: 1px; background: #F1F5F9; margin: 20px 0; }
+    .divider { height: 1px; background: #EBEAED; margin: 20px 0; }
 </style>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <div class="login-wrapper">
     <div class="login-card">

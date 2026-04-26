@@ -107,6 +107,8 @@
     .empty-state svg { margin: 0 auto 16px; opacity: .3; }
     .empty-state h2 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
     .empty-state p  { font-size: .875rem; margin-top: 4px; }
+
+    .search-input:focus { border-color: var(--blue) !important; outline: none; }
 </style>
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
@@ -122,14 +124,50 @@
     @endif
 </div>
 
+{{-- SEARCH BAR --}}
+<form method="GET" action="{{ route('products.index') }}" style="margin-bottom: 20px;">
+    @if($kategoriAktif)
+        <input type="hidden" name="kategori" value="{{ $kategoriAktif }}">
+    @endif
+    <div style="display:flex; gap:10px; max-width:480px;">
+        <input
+            type="text"
+            name="search"
+            value="{{ $search ?? '' }}"
+            placeholder="Cari produk..."
+            class="search-input"
+            style="flex:1; padding:10px 16px; border-radius:10px; border:1.5px solid var(--border);
+                   font-size:0.9rem; font-family:inherit; background:var(--surface);
+                   color:var(--text); transition:border-color .15s;"
+        >
+        <button type="submit"
+            style="background:var(--blue); color:white; border:none; border-radius:10px;
+                   padding:10px 20px; font-weight:700; font-size:0.9rem; cursor:pointer;
+                   font-family:inherit; transition:background .15s;"
+            onmouseover="this.style.background='var(--blue-dark)'"
+            onmouseout="this.style.background='var(--blue)'">
+            🔍 Cari
+        </button>
+        @if(!empty($search))
+            <a href="{{ route('products.index', $kategoriAktif ? ['kategori' => $kategoriAktif] : []) }}"
+               style="background:var(--border); color:var(--text); border-radius:10px;
+                      padding:10px 16px; font-weight:600; font-size:0.9rem; text-decoration:none;
+                      display:flex; align-items:center;">
+                ✕ Reset
+            </a>
+        @endif
+    </div>
+</form>
+
 {{-- FILTER KATEGORI --}}
 @php
     $kategoriList = ['Laptop', 'Audio', 'Smartphone', 'Wearable', 'Kamera', 'Aksesoris'];
 @endphp
 <div class="kategori-filter">
-    <a href="{{ route('products.index') }}" class="{{ !$kategoriAktif ? 'active' : '' }}">Semua</a>
+    <a href="{{ route('products.index', $search ? ['search' => $search] : []) }}"
+       class="{{ !$kategoriAktif ? 'active' : '' }}">Semua</a>
     @foreach($kategoriList as $kat)
-        <a href="{{ route('products.index', ['kategori' => $kat]) }}"
+        <a href="{{ route('products.index', array_filter(['kategori' => $kat, 'search' => $search])) }}"
            class="{{ $kategoriAktif === $kat ? 'active' : '' }}">
             {{ $kat }}
         </a>
@@ -141,8 +179,8 @@
         <svg width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
-        <h2>Tidak ada produk di kategori ini</h2>
-        <p>Coba pilih kategori lain.</p>
+        <h2>Produk tidak ditemukan</h2>
+        <p>{{ !empty($search) ? 'Coba kata kunci lain atau pilih kategori lain.' : 'Coba pilih kategori lain.' }}</p>
     </div>
 @else
     <div class="product-grid">

@@ -9,7 +9,8 @@ use App\Http\Controllers\AdminController;
 
 // Home
 Route::get('/', function () {
-    return view('welcome');
+    $featured = \App\Models\Product::whereNotNull('image')->latest()->take(4)->get();
+    return view('welcome', compact('featured'));
 });
 
 Route::get('/dashboard', fn() => redirect()->route('products.index'))->name('dashboard');

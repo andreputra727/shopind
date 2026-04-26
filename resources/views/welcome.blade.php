@@ -257,24 +257,28 @@
                 <p>Pilihan terbaik dengan harga terjangkau</p>
             </div>
             <div class="produk-grid">
-                @php
-                    $featured = [
-                        ['nama' => 'Laptop Modern Pro', 'harga' => 'Rp 12.500.000', 'icon' => '💻'],
-                        ['nama' => 'Headphone Wireless Pro', 'harga' => 'Rp 2.500.000', 'icon' => '🎧'],
-                        ['nama' => 'Smartphone X Pro', 'harga' => 'Rp 8.900.000', 'icon' => '📱'],
-                        ['nama' => 'Kamera Profesional', 'harga' => 'Rp 18.500.000', 'icon' => '📷'],
-                    ];
-                @endphp
-                @foreach ($featured as $item)
-                <a href="/produk" class="produk-card">
-                    <div class="produk-img">{{ $item['icon'] }}</div>
+                @forelse ($featured as $produk)
+                <a href="{{ route('products.show', $produk->id) }}" class="produk-card">
+                    <div class="produk-img" style="padding:0; overflow:hidden;">
+                        @if ($produk->image)
+                            <img src="{{ asset('storage/' . $produk->image) }}"
+                                 alt="{{ $produk->name }}"
+                                 style="width:100%; height:180px; object-fit:cover;">
+                        @else
+                            <span style="font-size:48px;">📦</span>
+                        @endif
+                    </div>
                     <div class="produk-info">
-                        <div class="produk-name">{{ $item['nama'] }}</div>
-                        <div class="produk-price">{{ $item['harga'] }}</div>
+                        <div class="produk-name">{{ $produk->name }}</div>
+                        <div class="produk-price">Rp {{ number_format($produk->price, 0, ',', '.') }}</div>
                         <div class="produk-btn">Lihat Detail</div>
                     </div>
                 </a>
-                @endforeach
+                @empty
+                    <p style="color:#666; grid-column: span 4; text-align:center;">
+                        Belum ada produk dengan gambar.
+                    </p>
+                @endforelse
             </div>
         </div>
     </section>
