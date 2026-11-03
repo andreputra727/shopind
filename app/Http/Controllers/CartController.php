@@ -39,6 +39,18 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Produk ditambahkan ke keranjang.');
     }
 
+    public function update(Request $request, $itemId)
+    {
+        $item = CartItem::findOrFail($itemId);
+        $qty = (int) $request->quantity;
+        if ($qty <= 0) {
+            $item->delete();
+        } else {
+            $item->update(['quantity' => $qty]);
+        }
+        return back()->with('success', 'Keranjang diperbarui.');
+    }
+
     public function remove($itemId)
     {
         $item = CartItem::findOrFail($itemId);

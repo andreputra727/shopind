@@ -6,7 +6,6 @@
     .page-header h1 { font-size: 1.875rem; font-weight: 800; color: var(--text); letter-spacing: -.5px; }
     .page-header p  { font-size: .95rem; color: var(--muted); margin-top: 6px; }
 
-    /* FILTER KATEGORI */
     .kategori-filter {
         display: flex;
         gap: 10px;
@@ -108,7 +107,57 @@
     .empty-state h2 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
     .empty-state p  { font-size: .875rem; margin-top: 4px; }
 
-    .search-input:focus { border-color: var(--blue) !important; outline: none; }
+    .search-area {
+        display: flex;
+        gap: 10px;
+        max-width: 560px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .search-input {
+        flex: 1;
+        border: 2px solid #02066F;
+        border-radius: 12px;
+        background: #ffffff;
+        font-size: 0.9rem;
+        font-family: inherit;
+        color: var(--text);
+        padding: 10px 16px;
+        outline: none;
+        transition: box-shadow .15s;
+        box-shadow: 0 4px 16px rgba(2,6,111,0.10);
+    }
+    .search-input::placeholder { color: #aaa; }
+    .search-input:focus { box-shadow: 0 0 0 3px rgba(2,6,111,0.15); }
+    .search-btn {
+        background: var(--blue);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 24px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background .15s;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(2,6,111,0.2);
+    }
+    .search-btn:hover { background: var(--blue-dark); }
+    .reset-btn {
+        background: var(--border);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 10px 16px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        transition: background .15s;
+    }
+    .reset-btn:hover { background: #d0cfd4; }
 </style>
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
@@ -117,7 +166,7 @@
         <p>Temukan produk terbaik di Shopind</p>
     </div>
     @if(auth()->check() && auth()->user()->isAdmin())
-        <a href="{{ route('admin.create') }}" style="background:var(--blue); color:white; padding:10px 24px; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.95rem; display:inline-flex; align-items:center; gap:8px;">
+        <a href="{{ route('admin.create') }}" style="background:#ED4B00; color:white; padding:10px 24px; border-radius:10px; text-decoration:none; font-weight:700; font-size:0.95rem; display:inline-flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(237,75,0,0.3);">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
             Tambah Produk (Admin)
         </a>
@@ -125,36 +174,21 @@
 </div>
 
 {{-- SEARCH BAR --}}
-<form method="GET" action="{{ route('products.index') }}" style="margin-bottom: 20px;">
+<form method="GET" action="{{ route('products.index') }}">
     @if($kategoriAktif)
         <input type="hidden" name="kategori" value="{{ $kategoriAktif }}">
     @endif
-    <div style="display:flex; gap:10px; max-width:480px;">
+    <div class="search-area">
         <input
             type="text"
             name="search"
             value="{{ $search ?? '' }}"
             placeholder="Cari produk..."
             class="search-input"
-            style="flex:1; padding:10px 16px; border-radius:10px; border:1.5px solid var(--border);
-                   font-size:0.9rem; font-family:inherit; background:var(--surface);
-                   color:var(--text); transition:border-color .15s;"
         >
-        <button type="submit"
-            style="background:var(--blue); color:white; border:none; border-radius:10px;
-                   padding:10px 20px; font-weight:700; font-size:0.9rem; cursor:pointer;
-                   font-family:inherit; transition:background .15s;"
-            onmouseover="this.style.background='var(--blue-dark)'"
-            onmouseout="this.style.background='var(--blue)'">
-            🔍 Cari
-        </button>
+        <button type="submit" class="search-btn">Cari</button>
         @if(!empty($search))
-            <a href="{{ route('products.index', $kategoriAktif ? ['kategori' => $kategoriAktif] : []) }}"
-               style="background:var(--border); color:var(--text); border-radius:10px;
-                      padding:10px 16px; font-weight:600; font-size:0.9rem; text-decoration:none;
-                      display:flex; align-items:center;">
-                ✕ Reset
-            </a>
+            <a href="{{ route('products.index', $kategoriAktif ? ['kategori' => $kategoriAktif] : []) }}" class="reset-btn">✕ Reset</a>
         @endif
     </div>
 </form>

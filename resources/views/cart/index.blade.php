@@ -10,7 +10,6 @@
             margin-bottom: 28px;
         }
 
-        /* EMPTY STATE */
         .cart-empty {
             text-align: center;
             padding: 90px 24px;
@@ -31,207 +30,139 @@
             margin: 0 auto 20px;
         }
 
-        .cart-empty h2 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .cart-empty p {
-            font-size: .875rem;
-            color: var(--muted);
-            margin-top: 6px;
-        }
+        .cart-empty h2 { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+        .cart-empty p { font-size: .875rem; color: var(--muted); margin-top: 6px; }
 
         .btn-shop {
-            display: inline-block;
-            margin-top: 20px;
-            background: var(--blue);
-            color: white;
-            font-size: .875rem;
-            font-weight: 700;
-            padding: 11px 24px;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background .15s;
+            display: inline-block; margin-top: 20px;
+            background: var(--blue); color: white;
+            font-size: .875rem; font-weight: 700;
+            padding: 11px 24px; border-radius: 10px;
+            text-decoration: none; transition: background .15s;
         }
+        .btn-shop:hover { background: var(--blue-dark); }
 
-        .btn-shop:hover {
-            background: var(--blue-dark);
-        }
-
-        /* CART LAYOUT */
         .cart-layout {
             display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 20px;
+            grid-template-columns: 1fr 360px;
+            gap: 24px;
             align-items: start;
         }
 
-        /* CART ITEMS */
-        .cart-items {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .cart-items { display: flex; flex-direction: column; gap: 12px; }
 
         .cart-item {
-            background: var(--surface);
+            background: white;
             border-radius: 14px;
             border: 1.5px solid var(--border);
             padding: 16px;
             display: flex;
             align-items: center;
             gap: 16px;
-            transition: border-color .15s;
+            transition: all .15s;
+            box-shadow: 0 2px 8px rgba(2,0,53,0.05);
         }
-
         .cart-item:hover {
-            border-color: #BFDBFE;
+            border-color: var(--blue);
+            box-shadow: 0 4px 16px rgba(2,0,53,0.10);
         }
 
         .cart-item-img {
-            width: 72px;
-            height: 72px;
-            border-radius: 10px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #F1F5F9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 72px; height: 72px;
+            border-radius: 10px; overflow: hidden;
+            flex-shrink: 0; background: #F1F5F9;
+            display: flex; align-items: center; justify-content: center;
+            border: 1.5px solid #EBEAED;
         }
+        .cart-item-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .cart-item-img-placeholder { font-size: .65rem; color: #94A3B8; font-weight: 500; text-align: center; }
 
-        .cart-item-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-size: .9rem; font-weight: 700; color: var(--text); }
+        .cart-item-price { font-size: .875rem; font-weight: 800; color: #ED4B00; margin-top: 4px; }
 
-        .cart-item-img-placeholder {
-            font-size: .65rem;
-            color: #94A3B8;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        .cart-item-info {
-            flex: 1;
-        }
-
-        .cart-item-name {
-            font-size: .9rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .cart-item-price {
-            font-size: .875rem;
-            font-weight: 800;
+        .qty-control { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+        .qty-btn {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border);
+            background: #fff;
+            font-size: 1.1rem; font-weight: 700;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
             color: var(--blue);
-            margin-top: 4px;
+            transition: all .15s; line-height: 1;
         }
-
-        .cart-item-qty {
-            font-size: .8rem;
-            font-weight: 600;
-            color: var(--muted);
-            background: #F1F5F9;
-            padding: 4px 10px;
-            border-radius: 6px;
-            flex-shrink: 0;
+        .qty-btn:hover { background: var(--blue); color: white; border-color: var(--blue); }
+        .qty-num {
+            min-width: 32px; text-align: center;
+            font-weight: 700; font-size: .9rem; color: var(--text);
         }
 
         .btn-remove {
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #CBD5E1;
-            transition: all .15s;
-            flex-shrink: 0;
+            background: none; border: none; cursor: pointer;
+            width: 34px; height: 34px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            color: #CBD5E1; transition: all .15s; flex-shrink: 0;
         }
+        .btn-remove:hover { background: #FEF2F2; color: var(--red); }
 
-        .btn-remove:hover {
-            background: #FEF2F2;
-            color: var(--red);
-        }
-
-        /* SUMMARY */
         .cart-summary {
-            background: var(--surface);
+            background: white;
             border-radius: 16px;
             border: 1.5px solid var(--border);
             padding: 24px;
             position: sticky;
             top: 84px;
+            box-shadow: 0 4px 20px rgba(2,0,53,0.08);
         }
-
         .cart-summary h3 {
-            font-size: .95rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 18px;
+            font-size: 1rem; font-weight: 800;
+            color: var(--text); margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1.5px solid var(--border);
         }
 
         .summary-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: .875rem;
-            color: var(--muted);
-            margin-bottom: 10px;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: .875rem; color: var(--muted); margin-bottom: 10px;
         }
+        .summary-row span:last-child { font-weight: 600; color: var(--text); }
 
-        .summary-row span:last-child {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .summary-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 14px 0;
-        }
+        .summary-divider { height: 1.5px; background: var(--border); margin: 14px 0; }
 
         .summary-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: .975rem;
-            font-weight: 700;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 1rem; font-weight: 800; color: var(--text);
+        }
+        .summary-total span:last-child { color: #ED4B00; font-size: 1.15rem; }
+
+        .payment-label {
+            font-size: .9rem; font-weight: 700;
+            margin-bottom: 12px; display: block;
             color: var(--text);
         }
-
-        .summary-total span:last-child {
-            color: var(--blue);
-            font-size: 1.1rem;
+        .payment-option {
+            display: flex; align-items: center; gap: 10px;
+            cursor: pointer; padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px; background: #F8F8FA;
+            transition: all .15s;
         }
+        .payment-option:hover { border-color: var(--blue); background: #EEF2FF; }
+        .payment-option input[type="radio"] { accent-color: var(--blue); width: 16px; height: 16px; }
+        .payment-option span { font-size: .875rem; color: var(--text); font-weight: 500; }
 
         .btn-checkout {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: var(--blue);
-            color: white;
-            font-size: .9rem;
-            font-weight: 700;
-            padding: 13px 0;
-            border-radius: 11px;
-            text-decoration: none;
-            transition: background .15s;
-            margin-top: 20px;
+            display: block; width: 100%; text-align: center;
+            background: linear-gradient(135deg, #020035 0%, #02066F 100%);
+            color: white; font-size: .95rem; font-weight: 700;
+            padding: 14px 0; border-radius: 11px;
+            border: none; cursor: pointer;
+            transition: all .15s; margin-top: 16px;
+            box-shadow: 0 4px 12px rgba(2,0,53,0.2);
         }
-
-        .btn-checkout:hover {
-            background: var(--blue-dark);
-        }
+        .btn-checkout:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(2,0,53,0.3); }
     </style>
 
     <h1 class="cart-title">Keranjang Belanja</h1>
@@ -265,7 +196,15 @@
                             <div class="cart-item-name">{{ $item->product->name }}</div>
                             <div class="cart-item-price">Rp {{ number_format($item->product->price, 0, ',', '.') }}</div>
                         </div>
-                        <div class="cart-item-qty">Qty: {{ $item->quantity }}</div>
+
+                        <form action="{{ route('cart.update', $item->id) }}" method="POST" class="qty-control">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" name="quantity" value="{{ $item->quantity - 1 }}" class="qty-btn">−</button>
+                            <span class="qty-num">{{ $item->quantity }}</span>
+                            <button type="submit" name="quantity" value="{{ $item->quantity + 1 }}" class="qty-btn">+</button>
+                        </form>
+
                         <form action="{{ route('cart.remove', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -288,36 +227,31 @@
                     <span>Subtotal ({{ $items->count() }} item)</span>
                     <span>Rp {{ number_format($total, 0, ',', '.') }}</span>
                 </div>
-                <div class="summary-row">
-                </div>
                 <div class="summary-divider"></div>
                 <div class="summary-total">
                     <span>Total</span>
                     <span>Rp {{ number_format($total, 0, ',', '.') }}</span>
                 </div>
 
-                <!-- Bagian Pemilihan Metode Pembayaran -->
-            <form action="{{ route('order.checkout') }}" method="GET" style="margin-top: 24px;">
-                <span class="font-semibold text-gray-800"
-                    style="font-size: .95rem; margin-bottom: 12px; display: block;">Metode Pembayaran</span>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                    <label style="display: flex; items-center; gap: 10px; cursor: pointer; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff;">
-                        <input type="radio" name="payment" value="debit" checked style="accent-color: var(--blue); width: 16px; height: 16px; margin-top:2px;">
-                        <span style="font-size: .875rem; color: var(--text); font-weight: 500;">💳 Kartu Debit</span>
-                    </label>
-                    <label style="display: flex; items-center; gap: 10px; cursor: pointer; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff;">
-                        <input type="radio" name="payment" value="qr" style="accent-color: var(--blue); width: 16px; height: 16px; margin-top:2px;">
-                        <span style="font-size: .875rem; color: var(--text); font-weight: 500;">📱 Kode QR (Qris)</span>
-                    </label>
-                    <label style="display: flex; items-center; gap: 10px; cursor: pointer; padding: 12px; border: 1px solid var(--border); border-radius: 10px; background: #fff;">
-                        <input type="radio" name="payment" value="saldo" style="accent-color: var(--blue); width: 16px; height: 16px; margin-top:2px;">
-                        <span style="font-size: .875rem; color: var(--text); font-weight: 500;">💰 Saldo Akun (Rp {{ number_format(Auth::user()->balance, 0, ',', '.') }})</span>
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-checkout w-full border-0">Checkout Sekarang →</button>
-            </form>
-        </div>
+                <form action="{{ route('order.checkout') }}" method="GET" style="margin-top: 24px;">
+                    <span class="payment-label">Metode Pembayaran</span>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="debit" checked>
+                            <span>💳 Kartu Debit</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="qr">
+                            <span>📱 Kode QR (Qris)</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="saldo">
+                            <span>💰 Saldo Akun (Rp {{ number_format(Auth::user()->balance, 0, ',', '.') }})</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-checkout">Checkout Sekarang →</button>
+                </form>
+            </div>
         </div>
     @endif
 @endsection

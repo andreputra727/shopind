@@ -14,8 +14,8 @@
         body { font-family: 'Sora', sans-serif; background: #F2F3F4; color: #020035; }
 
         nav {
-            background: #F2F3F4;
-            border-bottom: 1px solid #EBEAED;
+            background: linear-gradient(135deg, #020035 0%, #02066F 100%);
+            border-bottom: 1px solid #02066F;
             position: sticky; top: 0; z-index: 50;
         }
         .nav-inner {
@@ -23,18 +23,18 @@
             padding: 0 24px; height: 64px;
             display: flex; align-items: center; justify-content: space-between;
         }
-        .nav-logo { font-size: 22px; font-weight: 700; color: #02066F; text-decoration: none; }
+        .nav-logo { text-decoration: none; display: flex; align-items: center; }
         .nav-links { display: flex; align-items: center; gap: 8px; }
         .nav-links a {
             padding: 8px 18px; border-radius: 8px; font-size: 14px;
-            font-weight: 500; text-decoration: none; color: #020035; transition: background 0.15s;
+            font-weight: 500; text-decoration: none; color: #ffffff; transition: background 0.15s;
         }
-        .nav-links a:hover { background: #EBEAED; }
-        .nav-links .btn-primary { background: #020035; color: #fff; padding: 8px 20px; }
-        .nav-links .btn-primary:hover { background: #02066F; }
+        .nav-links a:hover { background: rgba(255,255,255,0.15); }
+        .nav-links .btn-primary { background: #ffffff; color: #020035; padding: 8px 20px; }
+        .nav-links .btn-primary:hover { background: #EBEAED; }
         .nav-center { display: flex; gap: 24px; }
-        .nav-center a { text-decoration: none; color: #020035; font-size: 14px; font-weight: 500; }
-        .nav-center a:hover { color: #02066F; }
+        .nav-center a { text-decoration: none; color: #ffffff; font-size: 14px; font-weight: 500; }
+        .nav-center a:hover { color: #EBEAED; }
 
         .hero { background: linear-gradient(135deg, #EBEAED 0%, #F2F3F4 60%, #EBEAED 100%); padding: 80px 24px; }
         .hero-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 60px; }
@@ -158,7 +158,9 @@
     {{-- NAVBAR --}}
     <nav>
         <div class="nav-inner">
-            <a href="/" class="nav-logo">Shopind</a>
+            <a href="/" class="nav-logo">
+                <img src="/images/logo.png" alt="Shopind" style="height:200px; width:auto;">
+            </a>
             <div class="nav-center">
                 <a href="/">Home</a>
                 <a href="/produk">Produk</a>

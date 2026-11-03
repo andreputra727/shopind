@@ -23,6 +23,7 @@ Route::get('/produk/{id}', [ProductController::class, 'show'])->name('products.s
 Route::middleware('auth')->group(function () {
     Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
     Route::post('/keranjang/tambah/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::patch('/keranjang/update/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/keranjang/hapus/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
     // Top Up

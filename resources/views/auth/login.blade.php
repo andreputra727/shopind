@@ -14,17 +14,13 @@
         background: white;
         border-radius: 24px;
         border: 1.5px solid #EBEAED;
-        padding: 44px 40px;
+        padding: 24px 40px;
         width: 100%; max-width: 420px;
         box-shadow: 0 8px 40px rgba(2,0,53,.08);
     }
-    .login-brand { text-align: center; margin-bottom: 32px; }
-    .login-brand-name {
-        font-size: 1.75rem; font-weight: 800;
-        color: #02066F; letter-spacing: -.5px;
-        display: block; text-decoration: none;
-    }
-    .login-brand-sub { font-size: .8rem; color: #2000B1; font-weight: 500; margin-top: 2px; }
+    .login-brand { text-align: center; margin-bottom: 8px; }
+    .login-brand-name { display: block; text-decoration: none; }
+    .login-brand-sub { font-size: .8rem; color: #2000B1; font-weight: 500; margin-top: 4px; margin-bottom: 20px; }
     .login-heading { font-size: 1.15rem; font-weight: 700; color: #020035; margin-bottom: 6px; }
     .login-subheading { font-size: .875rem; color: #2000B1; margin-bottom: 28px; }
     .form-group { margin-bottom: 18px; }
@@ -71,8 +67,11 @@
 <div class="login-wrapper">
     <div class="login-card">
         <div class="login-brand">
-            <a href="/" class="login-brand-name">Shopind</a>
-            <p class="login-brand-sub">Belanja Mudah & Cepat</p>
+            <a href="/" class="login-brand-name">
+                <img src="/images/logo.png" alt="Shopind"
+                    style="height:250px; width:auto; display:block; margin:-40px auto -40px;
+                           filter: brightness(0) saturate(100%) invert(11%) sepia(99%) saturate(2000%) hue-rotate(225deg) brightness(95%);">
+            </a>
         </div>
 
         <h2 class="login-heading">Selamat datang kembali</h2>

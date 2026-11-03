@@ -11,73 +11,79 @@
     .back-link:hover { color: var(--blue); }
 
     .product-detail-card {
-        background: var(--surface);
+        background: white;
         border-radius: 20px;
         border: 1.5px solid var(--border);
         overflow: hidden;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        box-shadow: 0 4px 20px rgba(15,23,42,.06);
+        box-shadow: 0 8px 32px rgba(2,0,53,0.10);
     }
 
     .product-detail-img img {
         width: 100%; height: 100%;
         object-fit: cover; display: block;
-        min-height: 360px;
+        min-height: 420px;
     }
     .product-detail-img-placeholder {
-        width: 100%; min-height: 360px;
+        width: 100%; min-height: 420px;
         background: #F1F5F9;
         display: flex; align-items: center; justify-content: center;
         flex-direction: column; gap: 10px; color: #CBD5E1;
     }
     .product-detail-img-placeholder span { font-size: .85rem; font-weight: 500; }
 
-    .product-detail-info { padding: 40px 40px; display: flex; flex-direction: column; }
+    .product-detail-info {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(160deg, #020035 0%, #02066F 100%);
+    }
 
     .product-detail-name {
-        font-size: 1.6rem; font-weight: 800; color: var(--text);
+        font-size: 1.6rem; font-weight: 800; color: #ffffff;
         letter-spacing: -.4px; line-height: 1.25;
     }
     .product-detail-price {
-        font-size: 1.5rem; font-weight: 800; color: var(--blue);
+        font-size: 1.5rem; font-weight: 800; color: #ED4B00;
         margin-top: 14px;
     }
     .product-detail-stock {
         display: inline-flex; align-items: center; gap: 6px;
-        margin-top: 14px; padding: 6px 12px; border-radius: 8px;
-        background: #F0FDF4; color: #166534;
+        margin-top: 14px; padding: 6px 14px; border-radius: 999px;
+        background: rgba(255,255,255,0.1); color: #ffffff;
         font-size: .8rem; font-weight: 600;
-        border: 1px solid #BBF7D0;
+        border: 1px solid rgba(255,255,255,0.2);
         width: fit-content;
     }
     .product-detail-stock svg { flex-shrink: 0; }
 
     .product-detail-divider {
-        height: 1px; background: var(--border); margin: 24px 0;
+        height: 1px; background: rgba(255,255,255,0.15); margin: 24px 0;
     }
     .product-detail-desc-label {
-        font-size: .8rem; font-weight: 700; color: var(--muted);
+        font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.6);
         text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px;
     }
     .product-detail-desc {
-        font-size: .925rem; color: #475569; line-height: 1.65;
+        font-size: .925rem; color: rgba(255,255,255,0.8); line-height: 1.65;
         flex: 1;
     }
 
     .btn-cart {
         display: block; width: 100%; text-align: center;
-        background: var(--blue); color: white;
+        background: #ED4B00; color: white;
         font-family: inherit; font-size: .95rem; font-weight: 700;
         padding: 14px 0; border-radius: 12px; border: none;
-        cursor: pointer; transition: background .15s, transform .1s;
+        cursor: pointer; transition: all .15s;
         margin-top: 28px;
+        box-shadow: 0 4px 16px rgba(237,75,0,0.35);
     }
-    .btn-cart:hover { background: var(--blue-dark); }
+    .btn-cart:hover { background: #c43d00; transform: translateY(-1px); }
     .btn-cart:active { transform: scale(.98); }
 </style>
 
-<a href="{{ route('products.index') }}" class="back-link">
+<a href="/produk" class="back-link">    
     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
     Kembali ke Produk
 </a>

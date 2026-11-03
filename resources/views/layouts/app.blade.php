@@ -31,10 +31,11 @@
 
         /* NAVBAR */
         .navbar {
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, #020035 0%, #02066F 100%);
+            border-bottom: 1px solid #02066F;
             position: sticky; top: 0; z-index: 100;
-            box-shadow: 0 1px 4px rgba(15,23,42,.05);
+            box-shadow: 0 1px 4px rgba(15,23,42,.15);
+            overflow: hidden;
         }
         .navbar-inner {
             max-width: 1200px; margin: 0 auto;
@@ -42,46 +43,45 @@
             display: flex; align-items: center; justify-content: space-between; gap: 24px;
         }
         .navbar-brand a {
-            font-size: 1.35rem; font-weight: 800;
-            color: var(--blue); text-decoration: none; letter-spacing: -.5px;
+            text-decoration: none; display: flex; align-items: center;
         }
-        .navbar-brand p { font-size: .7rem; color: var(--muted); margin-top: 1px; font-weight: 500; }
         .navbar-links { display: flex; gap: 2px; }
         .navbar-links a {
-            font-size: .875rem; font-weight: 600; color: var(--muted);
+            font-size: .875rem; font-weight: 600; color: rgba(255,255,255,0.75);
             text-decoration: none; padding: 7px 14px; border-radius: 8px; transition: all .15s;
         }
-        .navbar-links a:hover, .navbar-links a.active { color: var(--blue); background: var(--blue-light); }
+        .navbar-links a:hover, .navbar-links a.active { color: #ffffff; background: rgba(255,255,255,0.15); }
         .navbar-actions { display: flex; align-items: center; gap: 8px; }
         .icon-btn {
             width: 38px; height: 38px; border-radius: 10px;
-            border: 1.5px solid var(--border); background: var(--surface);
+            border: 1.5px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.1);
             display: flex; align-items: center; justify-content: center;
-            color: var(--muted); text-decoration: none; transition: all .15s; cursor: pointer;
+            color: rgba(255,255,255,0.85); text-decoration: none; transition: all .15s; cursor: pointer;
         }
-        .icon-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+        .icon-btn:hover { border-color: #ffffff; color: #ffffff; background: rgba(255,255,255,0.2); }
         .navbar-user {
             display: flex; align-items: center; gap: 10px;
-            padding: 4px 12px 4px 4px; border-radius: 12px; border: 1.5px solid var(--border);
+            padding: 4px 12px 4px 4px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.25);
         }
         .avatar {
             width: 28px; height: 28px; border-radius: 8px;
-            background: var(--blue); color: white;
+            background: rgba(255,255,255,0.2); color: white;
             font-size: .72rem; font-weight: 700;
             display: flex; align-items: center; justify-content: center;
         }
-        .navbar-user span { font-size: .82rem; font-weight: 600; }
+        .navbar-user span { font-size: .82rem; font-weight: 600; color: #ffffff; }
+        .navbar-user span.admin-name { color: #ED4B00; }
         .btn-logout {
             background: none; border: none; font-family: inherit;
-            font-size: .82rem; font-weight: 600; color: var(--muted);
+            font-size: .82rem; font-weight: 600; color: rgba(255,255,255,0.65);
             cursor: pointer; transition: color .15s; padding: 0;
         }
-        .btn-logout:hover { color: var(--red); }
+        .btn-logout:hover { color: #ffaaaa; }
         .btn-login {
-            background: var(--blue); color: white; font-size: .875rem; font-weight: 700;
+            background: #ffffff; color: #020035; font-size: .875rem; font-weight: 700;
             padding: 8px 18px; border-radius: 10px; text-decoration: none; transition: background .15s;
         }
-        .btn-login:hover { background: var(--blue-dark); }
+        .btn-login:hover { background: #EBEAED; }
 
         /* MAIN */
         .main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 56px; }
@@ -99,8 +99,9 @@
 <nav class="navbar">
     <div class="navbar-inner">
         <div class="navbar-brand">
-            <a href="{{ url('/') }}">Shopind</a>
-            <p>Belanja Mudah & Cepat</p>
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Shopind" style="height:200px; width:auto;">
+            </a>
         </div>
         <div class="navbar-links">
             <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Home</a>
@@ -111,7 +112,7 @@
                 @endif
             @endauth
             @if(auth()->check() && auth()->user()->isAdmin())
-                <a href="{{ route('admin.index') }}" style="color:var(--red); font-weight:700;">Dashboard Admin</a>
+                <a href="{{ route('admin.index') }}" style="color:#ED4B00; font-weight:700;">Dashboard Admin</a>
             @endif
         </div>
         <div class="navbar-actions">
@@ -125,15 +126,15 @@
             @auth
                 <div class="navbar-user">
                     @if(auth()->user()->isCustomer())
-                    <div style="font-size: .85rem; font-weight: 700; color: #065F46; margin-right: 8px; display:flex; align-items:center; gap:8px;">
+                    <div style="font-size: .85rem; font-weight: 700; color: #ffffff; margin-right: 8px; display:flex; align-items:center; gap:8px;">
                         <span>💰 Rp {{ number_format(Auth::user()->balance, 0, ',', '.') }}</span>
-                        <a href="{{ route('topup.index') }}" style="background:#ECFDF5; color:#059669; padding:4px 8px; border-radius:6px; border:1px solid #34D399; text-decoration:none; font-size:.75rem; transition:all .15s;" title="Isi Saldo">+ Top Up</a>
-                        <a href="{{ route('transfer.index') }}" style="background:#F3E8FF; color:#7E22CE; padding:4px 8px; border-radius:6px; border:1px solid #D8B4FE; text-decoration:none; font-size:.75rem; transition:all .15s;" title="Kirim Saldo">⇄ Transfer</a>
+                        <a href="{{ route('topup.index') }}" style="background:#ED4B00; color:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #c43d00; text-decoration:none; font-size:.75rem; transition:all .15s;" title="Isi Saldo">+ Top Up</a>
+                        <a href="{{ route('transfer.index') }}" style="background:#ED4B00; color:#ffffff; padding:4px 8px; border-radius:6px; border:1px solid #c43d00; text-decoration:none; font-size:.75rem; transition:all .15s;" title="Kirim Saldo">⇄ Transfer</a>
                     </div>
                     @endif
                     <div class="avatar">{{ strtoupper(substr(Auth::user()->name,0,1)) }}</div>
-                    <span>{{ Auth::user()->name }}</span>
-                    <form method="POST" action="{{ route('logout') }}" style="margin:0; padding-left: 8px; border-left: 1px solid var(--border);">
+                    <span class="{{ auth()->user()->isAdmin() ? 'admin-name' : '' }}">{{ Auth::user()->name }}</span>
+                    <form method="POST" action="{{ route('logout') }}" style="margin:0; padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.25);">
                         @csrf
                         <button type="submit" class="btn-logout">Logout</button>
                     </form>
